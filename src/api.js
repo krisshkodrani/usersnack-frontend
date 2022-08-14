@@ -1,5 +1,5 @@
 import axios from 'axios';
-require('dotenv').config();
+import 'dotenv/config';
 
 const BASE_URL = process.env.BACKEND_BASE_URL ? process.env.BACKEND_BASE_URL : 'http://localhost:8000';
 
