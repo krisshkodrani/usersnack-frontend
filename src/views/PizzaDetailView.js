@@ -32,6 +32,7 @@ const PizzaDetailView = () => {
         selectedExtraList.forEach(extra => {
             total += extra.price
         });
+        total = parseFloat(total).toFixed(2);
         setTotalPrice(total);
     }, [selectedExtraList, pizza]);
 
