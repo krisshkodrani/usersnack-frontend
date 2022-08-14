@@ -1,6 +1,7 @@
 import axios from 'axios';
+require('dotenv').config();
 
-const BASE_URL = process.env.BACKEND_BASE_URL ? process.env.BACKEND_BASE_URL : 'http://localhost:8000'
+const BASE_URL = process.env.BACKEND_BASE_URL ? process.env.BACKEND_BASE_URL : 'http://localhost:8000';
 
 export async function getPizzas() {
     try {
