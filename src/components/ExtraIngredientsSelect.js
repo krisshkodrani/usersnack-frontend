@@ -22,7 +22,6 @@ const ExtraIngredientSelect = ({ selectedExtraList, setSelectedExtraList }) => {
 
     useEffect(() => {
         getExtraIngredients().then(data => {
-            console.log(data);
             setExtraIngredients({ loading: false, data })
         })
     }, []);
@@ -60,7 +59,7 @@ const ExtraIngredientSelect = ({ selectedExtraList, setSelectedExtraList }) => {
                     {
                         extraIngredients.data.map(extra => {
                             return (
-                                <option key={extra.id} value={extra.id}>{extra.name}</option>
+                                <option key={extra.id} value={extra.id}>{extra.name} +{extra.price.toFixed(2)} USD</option>
                             )
                         })
                     }

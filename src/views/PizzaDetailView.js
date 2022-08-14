@@ -44,7 +44,7 @@ const PizzaDetailView = () => {
     }
 
     return (
-        <Container maxW={'7xl'} p='12'>
+        <Container maxW='7xl' p='12'>
             <Header headerText={'Usersnack - ' + pizza.data.name} />
             <PizzaDetailSection pizza={pizza.data} />
             <Divider my={10} />
