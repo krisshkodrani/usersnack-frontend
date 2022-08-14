@@ -11,6 +11,7 @@ import Header from '../components/Header';
 import PizzaDetailSection from '../components/PizzaDetailSection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ExtraIngredientSelect from '../components/ExtraIngredientsSelect';
+import UsersnackModal from '../components/UsersnackModal';
 
 const PizzaDetailView = () => {
     const { id } = useParams();
@@ -19,7 +20,20 @@ const PizzaDetailView = () => {
         data: null,
     });
 
+    const [totalPrice, setTotalPrice] = useState();
     const [selectedExtraList, setSelectedExtraList] = useState([]);
+    const [isOrderModalOpen, setOrderModalOpen] = useState(false);
+
+    useEffect(() => {
+        let total = 0
+        if (!pizza.loading) {
+            total += pizza.data.base_price
+        }
+        selectedExtraList.forEach(extra => {
+            total += extra.price
+        });
+        setTotalPrice(total);
+    }, [selectedExtraList, pizza]);
 
     useEffect(() => {
         getPizza(id).then(data => {
@@ -38,15 +52,16 @@ const PizzaDetailView = () => {
             pizzaId: pizza.data.id,
             extraIngredients: selectedExtraList
         }
-        const responseData = await postPizzaOrder(data);
-
-        console.log(responseData);
+        const resData = await postPizzaOrder(data);
+        console.log(resData);
+        setOrderModalOpen(true);
     }
 
     return (
         <Container maxW='7xl' p='12'>
+            <UsersnackModal isOpen={isOrderModalOpen} />
             <Header headerText={'Usersnack - ' + pizza.data.name} />
-            <PizzaDetailSection pizza={pizza.data} />
+            <PizzaDetailSection pizza={pizza.data} totalPrice={totalPrice} />
             <Divider my={10} />
             <ExtraIngredientSelect
                 selectedExtraList={selectedExtraList}

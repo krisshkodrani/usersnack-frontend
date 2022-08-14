@@ -1,8 +1,8 @@
 import { Image, Box, Heading } from '@chakra-ui/react';
 import Ingredients from './Ingredients';
 
-function PizzaDetailSection({ pizza }) {
-    const { name, base_price, ingredients, image } = pizza;
+function PizzaDetailSection({ pizza, totalPrice }) {
+    const { name, ingredients, image } = pizza;
 
     return (
         <Box
@@ -21,7 +21,7 @@ function PizzaDetailSection({ pizza }) {
                 justifyContent='space-around'
                 marginTop={{ base: '3', sm: '0' }}>
                 <Heading size={'xl'} marginTop='1'>{name}</Heading>
-                <Heading size={'lg'}>{base_price.toFixed(2)} USD</Heading>
+                <Heading size={'lg'}>{totalPrice} USD</Heading>
                 <Ingredients ingredients={ingredients} variant='outline' colorScheme='orange' />
             </Box>
             <Image

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    Box,
     Heading,
     Stack,
 } from '@chakra-ui/react';
@@ -9,9 +8,8 @@ import {
 const Header = ({ headerText }) => {
     return (
         <Stack
-            as={Box}
-            spacing={{ base: 8, md: 14 }}
-            py={{ base: 10 }}
+            spacing={5}
+            py={5}
         >
             <Heading
                 fontWeight={500}
