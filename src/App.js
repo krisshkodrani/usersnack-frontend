@@ -13,7 +13,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Routes>
             <Route path='/' exact element={<PizzasOverview />} />
-            <Route path='/:id' exact element={<PizzaDetailView />} />
+            <Route path='/:id/' exact element={<PizzaDetailView />} />
           </Routes>
         </BrowserRouter>
       </ChakraProvider>

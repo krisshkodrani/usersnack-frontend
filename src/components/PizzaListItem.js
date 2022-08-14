@@ -13,7 +13,7 @@ function PizzaListItem({ id, name, base_price, ingredients, image }) {
             borderWidth='1px'
             pl={10}
             _hover={{ bg: '#ebedf0' }}
-            onClick={() => navigate('/' + id)}
+            onClick={() => navigate(`/${id}/`)}
         >
             <Box flex='2' display={'flex'} flexDirection={'column'}>
                 <Box flex='2' display={'flex'} flexDirection={'column'} alignItems={'flex-start'} justifyContent={'center'}>
