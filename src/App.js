@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { ChakraProvider } from '@chakra-ui/react'
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import PizzasOverview from './views/PizzasOverview';
+import PizzaDetailView from './views/PizzaDetailView';
+
+class App extends React.Component {
+
+  render() {
+    return (
+      <ChakraProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' exact element={<PizzasOverview />} />
+            <Route path='/:id' exact element={<PizzaDetailView />} />
+          </Routes>
+        </BrowserRouter>
+      </ChakraProvider>
+    )
+  }
 }
 
 export default App;
