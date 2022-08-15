@@ -1,4 +1,4 @@
-# Pizza Service Usersnack Frontend
+# Usersnack React Frontend
 
 ## Setup
 
