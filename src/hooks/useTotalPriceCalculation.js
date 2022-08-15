@@ -4,6 +4,10 @@ const useTotalPriceCalculation = (pizza, selectedExtraList) => {
     const [totalPrice, setTotalPrice] = useState();
 
     useEffect(() => {
+        if (pizza.error) {
+            return
+        }
+
         let total = 0
         if (!pizza.loading) {
             total += pizza.data.base_price

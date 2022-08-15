@@ -15,6 +15,7 @@ import PizzaDetailSection from '../components/PizzaDetailSection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ExtraIngredientSelect from '../components/ExtraIngredientsSelect';
 import UsersnackModal from '../components/UsersnackModal';
+import SomethingWentWrong from '../components/SomethingWentWrong';
 
 import useGetPizza from '../hooks/useGetPizza';
 import useTotalPriceCalculation from '../hooks/useTotalPriceCalculation';
@@ -28,8 +29,7 @@ const PizzaDetailView = () => {
     const [orderRes, setOrderRes] = useState({
         sent: false,
         success: false,
-        data: null,
-        detail: null,
+        data: null
     });
 
     const [selectedExtraList, setSelectedExtraList] = useState([]);
@@ -65,6 +65,9 @@ const PizzaDetailView = () => {
         }
     }
 
+    if (!pizza.loading && pizza.error) {
+        return <SomethingWentWrong />
+    }
 
     if (pizza.loading) {
         return <LoadingSpinner />;

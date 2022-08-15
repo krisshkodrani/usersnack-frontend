@@ -17,7 +17,7 @@ const orderModalStates = {
     openFailMissingNameAndAddress: {
         isOpen: true,
         headerText: 'Required data missing',
-        bodyText: 'We cant deliever your pizza without a name and an address',
+        bodyText: 'We cannot deliever your pizza without a name and an address',
     }
 }
 

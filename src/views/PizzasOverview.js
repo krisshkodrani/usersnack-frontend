@@ -10,21 +10,31 @@ import { getPizzas } from '../api';
 import PizzaItem from '../components/PizzaListItem';
 import Header from '../components/Header';
 import LoadingSpinner from '../components/LoadingSpinner';
+import SomethingWentWrong from '../components/SomethingWentWrong';
 
 const PizzasOverview = () => {
     const [pizzas, setPizzas] = useState({
         loading: true,
         data: null,
+        error: false,
     });
 
     useEffect(() => {
-        getPizzas().then(data => {
-            setPizzas({ loading: false, data: data })
+        getPizzas().then(res => {
+            if (res.success) {
+                setPizzas({ loading: false, data: res.data, error: false })
+            } else {
+                setPizzas({ loading: false, data: null, error: true })
+            }
         })
     }, []);
 
     if (pizzas.loading) {
         return <LoadingSpinner />;
+    }
+
+    if (!pizzas.loading && pizzas.error) {
+        return <SomethingWentWrong hideBackToHomepageButton />;
     }
 
     return (

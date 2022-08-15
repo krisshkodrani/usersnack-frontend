@@ -7,10 +7,15 @@ const useGetPizza = () => {
     const [pizza, setPizza] = useState({
         loading: true,
         data: null,
+        error: false,
     });
     useEffect(() => {
-        getPizza(pizzaId).then(data => {
-            setPizza({ loading: false, data })
+        getPizza(pizzaId).then(res => {
+            if (res.success) {
+                setPizza({ loading: false, data: res.data, error: false })
+            } else {
+                setPizza({ loading: false, data: null, error: true })
+            }
         })
     }, [pizzaId]);
 

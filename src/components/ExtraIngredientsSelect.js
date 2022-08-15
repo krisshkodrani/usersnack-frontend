@@ -16,18 +16,22 @@ const ExtraIngredientSelect = ({ selectedExtraList, setSelectedExtraList }) => {
     const [extraIngredients, setExtraIngredients] = useState({
         loading: true,
         data: [],
+        error: false,
     });
 
     const [selectedExtra, setSelectedExtra] = useState();
 
     useEffect(() => {
-        getExtraIngredients().then(data => {
-            setExtraIngredients({ loading: false, data })
+        getExtraIngredients().then(res => {
+            if (res.success) {
+                setExtraIngredients({ loading: false, data: res.data, error: false })
+            } else {
+                setExtraIngredients({ loading: false, data: null, error: true })
+            }
         })
     }, []);
 
     const handleSelectIngredient = ({ target: { value } }) => {
-        console.log(value)
         const ingredient = extraIngredients.data.filter(i => i.id === parseInt(value))
         setSelectedExtra(ingredient[0])
     }
@@ -45,6 +49,9 @@ const ExtraIngredientSelect = ({ selectedExtraList, setSelectedExtraList }) => {
         return <LoadingSpinner />;
     }
 
+    if (!extraIngredients.loading && extraIngredients.error) {
+        return <Spacer />;
+    }
 
     return (
         <>

@@ -2,45 +2,34 @@ import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_BACKEND_BASE_URL || 'http://localhost:8000';
 
-export async function getPizzas() {
+async function getFormatedResponse(requestPromise) {
     try {
-        const response = await axios.get(BASE_URL + '/pizza/');
-        return response.data
+        const response = await requestPromise;
+        return { success: true, data: response.data }
     } catch (error) {
-        console.error(error);
+        return { success: false, data: null }
     }
+}
+
+export async function getPizzas() {
+    return getFormatedResponse(axios.get(BASE_URL + '/pizza/'))
 }
 
 
 export async function getPizza(id) {
-    try {
-        const response = await axios.get(BASE_URL + '/pizza/' + id);
-        return response.data
-    } catch (error) {
-        console.error(error);
-    }
+    return getFormatedResponse(axios.get(BASE_URL + `/pizza/${id}/`))
 }
 
 export async function getExtraIngredients() {
-    try {
-        const response = await axios.get(BASE_URL + '/pizza/ingredients/?is_extra=true');
-        return response.data
-    } catch (error) {
-        console.error(error);
-    }
+    return getFormatedResponse(axios.get(BASE_URL + '/pizza/ingredients/?is_extra=true'))
 }
 
 export async function postPizzaOrder({ customerName, customerAddress, pizzaId, extraIngredients }) {
-    try {
-        const response = await axios.post(BASE_URL + '/pizza/create-order/', {
-            'customer_name': customerName,
-            'customer_address': customerAddress,
-            'pizza_id': pizzaId,
-            'extra_ingredients': extraIngredients
-        });
-        return { success: true, data: response.data, detail: null }
-    } catch (error) {
-        const detail = error.response && error.response.data && error.response.data.detail
-        return { success: false, data: null, detail }
-    }
+    const postPizzaOrderRequestPromise = axios.post(BASE_URL + '/pizza/create-order/', {
+        'customer_name': customerName,
+        'customer_address': customerAddress,
+        'pizza_id': pizzaId,
+        'extra_ingredients': extraIngredients
+    })
+    return getFormatedResponse(postPizzaOrderRequestPromise)
 }
