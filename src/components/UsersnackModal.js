@@ -7,33 +7,20 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-    useDisclosure
 } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
 import ActionButton from './ActionButton';
 
-function UsersnackModal({ isOpen }) {
-    const { onClose } = useDisclosure()
-    let navigate = useNavigate()
-
-    const handleClose = () => {
-        onClose();
-        navigate('/');
-    }
-
+function UsersnackModal({ isOpen, onClose, headerText, bodyText }) {
     return (
         <>
-            <Modal isOpen={isOpen} onClose={handleClose}>
+            <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Order Received!</ModalHeader>
+                    <ModalHeader>{headerText}</ModalHeader>
                     <ModalCloseButton />
-                    <ModalBody>
-                        Your Pizza is on its way
-                    </ModalBody>
-
+                    <ModalBody>{bodyText}</ModalBody>
                     <ModalFooter>
-                        <ActionButton text={'Ok, great!'} onClick={handleClose} />
+                        <ActionButton text='Ok' onClick={onClose} />
                     </ModalFooter>
                 </ModalContent>
             </Modal>

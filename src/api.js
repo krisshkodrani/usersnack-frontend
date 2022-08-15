@@ -38,8 +38,9 @@ export async function postPizzaOrder({ customerName, customerAddress, pizzaId, e
             'pizza_id': pizzaId,
             'extra_ingredients': extraIngredients
         });
-        return response.data
+        return { success: true, data: response.data, detail: null }
     } catch (error) {
-        console.error(error);
+        const detail = error.response && error.response.data && error.response.data.detail
+        return { success: false, data: null, detail }
     }
 }
