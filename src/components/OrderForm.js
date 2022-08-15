@@ -30,10 +30,10 @@ export default function OrderForm({ onOrderButtonClick }) {
 
     return (
         <Box
-            bg='blackAlpha.100'
+            bg='blackAlpha.200'
             borderRadius='lg'
-            width={'40vw'}
-            p={8}
+            width={{ md: '50%', sm: '100%' }}
+            p={5}
             shadow='base'
         >
             <VStack spacing={5}>

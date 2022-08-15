@@ -80,14 +80,13 @@ const PizzaDetailView = () => {
             />
             <Header headerText={'Usersnack - ' + pizza.data.name} />
             <PizzaDetailSection pizza={pizza.data} totalPrice={totalPrice} />
-            <Divider my={10} />
+            <Divider my={2} />
             <ExtraIngredientSelect
                 selectedExtraList={selectedExtraList}
                 setSelectedExtraList={setSelectedExtraList}
             />
-            <Divider my={10} />
+            <Divider my={2} />
             <Box
-                marginTop={10}
                 display='flex'
                 justifyContent='flex-end'>
                 <OrderForm onOrderButtonClick={handleOrderPizza} />

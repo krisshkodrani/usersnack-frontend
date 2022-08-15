@@ -6,13 +6,13 @@ function PizzaDetailSection({ pizza, totalPrice }) {
 
     return (
         <Box
-            marginTop={{ base: '1', sm: '5' }}
+            marginTop={5}
             bg='blackAlpha.100'
             borderRadius='lg'
             p={10}
-            marginBottom={{ base: '2', sm: '5' }}
+            marginBottom={5}
             display='flex'
-            flexDirection={{ base: 'column', sm: 'row' }}
+            flexDirection={{ base: 'column', md: 'row' }}
             justifyContent='space-between'>
             <Box
                 display='flex'
@@ -20,15 +20,18 @@ function PizzaDetailSection({ pizza, totalPrice }) {
                 flexDirection='column'
                 justifyContent='space-around'
                 marginTop={{ base: '3', sm: '0' }}>
-                <Heading size={'xl'} marginTop='1'>{name}</Heading>
-                <Heading size={'lg'}>{totalPrice} USD</Heading>
+                <Heading size='xl' marginTop='1'>{name}</Heading>
+                <Heading size='lg'>{totalPrice} USD</Heading>
                 <Ingredients ingredients={ingredients} variant='outline' colorScheme='orange' />
             </Box>
-            <Image
-                src={image}
-                alt={name}
-                objectFit='contain'
-            />
+            <Box display='flex' flex='1'>
+                <Image
+
+                    src={image}
+                    alt={name}
+                    objectFit='contain'
+                />
+            </Box>
         </Box>
     )
 }

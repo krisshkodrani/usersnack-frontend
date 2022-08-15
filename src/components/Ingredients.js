@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    HStack,
     Wrap,
     WrapItem,
     Tag,
@@ -9,15 +8,14 @@ import {
 
 const Ingredients = ({ ingredients, onIngredientCloseButtonClick, size = 'lg', colorScheme, borderRadius, variant, hasCloseButton = false }) => {
     return (
-        <Wrap spacing={2} my={2}>
+        <Wrap spacing={2} my={2} marginRight={2}>
             {ingredients.map((ingredient) => {
                 return (
-                    <WrapItem>
+                    <WrapItem key={ingredient.id}>
                         <Tag
                             size={size}
                             variant={variant}
                             borderRadius={borderRadius}
-                            key={ingredient.id}
                             colorScheme={colorScheme}
                         >
                             {ingredient.name}

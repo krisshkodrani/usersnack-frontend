@@ -1,4 +1,14 @@
-# Usersnack Frontend
+# Pizza Service Usersnack Frontend
+
+## Setup
+
+Run to install dependencies
+
+### `npm install`
+
+## Note for Production
+
+Set a REACT_APP_BACKEND_BASE_URL env variable with the backend base URL.
 
 ## Available Scripts
 
@@ -10,12 +20,23 @@ Runs the app in the development mode. Open [http://localhost:3000](http://localh
 
 The page will reload when you make changes. You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.
 
 It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
+
+## Screenshots
+
+### Pizzas Overview
+
+![Alt text](screenshots/Overview.png "Overview")
+
+### Pizas Detail
+
+#### DetailSection
+![Alt text](screenshots/DetailSection.png "DetailSection")
+#### Order
+![Alt text](screenshots/Order.png "Order")
+#### Confirmation
+![Alt text](screenshots/Confirmation.png "Confirmation")

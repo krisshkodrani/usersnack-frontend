@@ -26,8 +26,9 @@ const ExtraIngredientSelect = ({ selectedExtraList, setSelectedExtraList }) => {
         })
     }, []);
 
-    const handleSelect = (id) => {
-        const ingredient = extraIngredients.data.filter(i => i.id === parseInt(id))
+    const handleSelectIngredient = ({ target: { value } }) => {
+        console.log(value)
+        const ingredient = extraIngredients.data.filter(i => i.id === parseInt(value))
         setSelectedExtra(ingredient[0])
     }
 
@@ -49,13 +50,19 @@ const ExtraIngredientSelect = ({ selectedExtraList, setSelectedExtraList }) => {
         <>
             <Box
                 my={5}
+                minH={120}
                 display='flex'
-                flexDirection={{ base: 'column', sm: 'row' }}
+                flexDirection={{ base: 'column', md: 'row' }}
                 justifyContent='space-between'
                 alignItems={'center'}
             >
                 <Text flex='2' fontSize='lg'>Please select multiple extras:</Text>
-                <Select onChange={(e) => handleSelect(e.target.value)} flex='2' placeholder='Choose extras'>
+                <Select
+                    onChange={handleSelectIngredient}
+                    flex='2'
+                    placeholder='Choose extras'
+                    maxW='40vw'
+                >
                     {
                         extraIngredients.data.map(extra => {
                             return (
@@ -68,8 +75,7 @@ const ExtraIngredientSelect = ({ selectedExtraList, setSelectedExtraList }) => {
                 <ActionButton text='Add' onClick={handleAddIngredient} />
             </Box>
             <Box
-                my={5}
-                minH={50}
+                minH={100}
                 display='flex'
                 justifyContent='flex-start'
                 alignItems='flex-start'
